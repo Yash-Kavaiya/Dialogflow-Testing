@@ -14,6 +14,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => (
       <nav className="flex items-center">
         <Link to="/" className="mx-2 hover:text-blue-500 dark:hover:text-blue-400">Home</Link>
         <Link to="/test" className="mx-2 hover:text-blue-500 dark:hover:text-blue-400">Test</Link>
+        <Link to="/csv-testing" className="mx-2 hover:text-blue-500 dark:hover:text-blue-400">CSV Testing</Link>
         <Link to="/about" className="mx-2 hover:text-blue-500 dark:hover:text-blue-400">About</Link>
         <Link to="/contact" className="mx-2 hover:text-blue-500 dark:hover:text-blue-400">Contact</Link>
         <Link to="/pricing" className="mx-2 hover:text-blue-500 dark:hover:text-blue-400">Pricing</Link>

@@ -7,6 +7,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import Pricing from './components/Pricing';
+import CSVTesting from './components/CSVTesting';
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -29,6 +30,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/test" element={<Home />} />
+        <Route path="/csv-testing" element={<CSVTesting />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/pricing" element={<Pricing />} />

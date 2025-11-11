@@ -52,6 +52,14 @@ Dialogflow Testing Tools is a comprehensive web application designed to help dev
       <td>Send queries and view formatted JSON responses in real-time</td>
     </tr>
     <tr>
+      <td>📊 CSV Bulk Testing</td>
+      <td>Upload CSV files with multiple test cases and run automated tests</td>
+    </tr>
+    <tr>
+      <td>🤖 Automated Test Execution</td>
+      <td>Run batch tests and get comprehensive results with pass/fail status</td>
+    </tr>
+    <tr>
       <td>🌐 Multi-language Support</td>
       <td>Test agents in various languages to ensure global coverage</td>
     </tr>
@@ -62,6 +70,10 @@ Dialogflow Testing Tools is a comprehensive web application designed to help dev
     <tr>
       <td>🔍 Response Analysis</td>
       <td>Detailed breakdown of agent responses and fulfillment</td>
+    </tr>
+    <tr>
+      <td>📈 Test Results Dashboard</td>
+      <td>Visual summary of test execution with detailed turn-by-turn analysis</td>
     </tr>
     <tr>
       <td>🌙 Dark Mode Support</td>
@@ -75,10 +87,14 @@ Dialogflow Testing Tools is a comprehensive web application designed to help dev
 ### Prerequisites
 
 - Node.js (v14 or later)
+- Python 3.8+ (for CSV testing backend)
 - Google Cloud Platform account with Dialogflow API enabled
 - Dialogflow CX or ES agent
+- Google Cloud credentials (service account JSON file)
 
 ### Installation Steps
+
+#### Frontend Setup
 
 ```bash
 # Clone the repository
@@ -92,7 +108,27 @@ npm install
 npm start
 ```
 
-Your application will be available at http://localhost:3000
+Your frontend application will be available at http://localhost:3000
+
+#### Backend Setup (for CSV Testing)
+
+```bash
+# Navigate to backend directory
+cd ../backend
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Set up Google Cloud credentials
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/credentials.json"
+
+# Start the Flask server
+python app.py
+```
+
+Your backend API will be available at http://localhost:5000
+
+See [backend/README.md](backend/README.md) for detailed backend setup and API documentation.
 
 ## 📊 Testing Capabilities
 
@@ -178,6 +214,26 @@ graph TD
 5. Click "Run Test"
 6. Review the formatted JSON response
 
+### CSV Bulk Testing
+
+For automated testing with multiple test cases:
+
+1. Navigate to the **CSV Testing** page
+2. Configure your agent settings (Project ID, Agent ID, Location)
+3. Download the sample CSV template or prepare your own
+4. Upload your CSV file with test cases
+5. Review the parsed test cases
+6. Click "Run Tests" to execute all test cases
+7. View detailed results with pass/fail status
+
+**CSV Format Example:**
+```csv
+test_id,conversation,expected_intent,language_code
+test_1,Hi|I want to book a flight|Tomorrow,booking.flight,en
+test_2,Hello|I need help,help.general,en
+test_3,Cancel my order|Order number 12345,order.cancel,en
+```
+
 ### Advanced Testing Scenarios
 
 | Scenario | Test Input | What to Verify |
@@ -187,6 +243,7 @@ graph TD
 | Fallback Handling | "xyzabcdefg" | Proper fallback behavior |
 | Context Management | Multi-turn conversation | Context persistence |
 | Webhook Integration | "Process my order" | Fulfillment responses |
+| Bulk Testing | Upload CSV with 100+ test cases | Automated regression testing |
 
 ## ⚙️ Configuration
 
@@ -208,21 +265,31 @@ GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/credentials.json
 ## 📈 Project Structure
 
 ```
-dialogflow-testing-tools/
-├── public/                # Static assets
-├── src/
-│   ├── components/        # React components
-│   │   ├── Home.tsx       # Main testing interface
-│   │   ├── About.tsx      # About page
-│   │   ├── Header.tsx     # Navigation header
+Dialogflow-Testing/
+├── dialogflow-testing-tools/  # React Frontend
+│   ├── public/                # Static assets
+│   ├── src/
+│   │   ├── components/        # React components
+│   │   │   ├── Home.tsx       # Main testing interface
+│   │   │   ├── CSVTesting.tsx # CSV bulk testing interface
+│   │   │   ├── About.tsx      # About page
+│   │   │   ├── Header.tsx     # Navigation header
+│   │   │   └── ...
+│   │   ├── services/          # API services
+│   │   │   └── dialogflowService.ts
+│   │   ├── App.tsx            # Main application component
+│   │   ├── index.tsx          # Entry point
 │   │   └── ...
-│   ├── services/          # API services
-│   │   └── dialogflowService.ts # Dialogflow API integration
-│   ├── App.tsx            # Main application component
-│   ├── index.tsx          # Entry point
-│   └── ...
-├── package.json           # Dependencies and scripts
-└── README.md              # Project documentation
+│   ├── package.json           # Dependencies and scripts
+│   └── README.md              # Frontend documentation
+├── backend/                   # Flask Backend (CSV Testing)
+│   ├── app.py                 # Flask API endpoints
+│   ├── csv_test_runner.py     # Test execution engine
+│   ├── requirements.txt       # Python dependencies
+│   ├── README.md              # Backend documentation
+│   ├── uploads/               # CSV file uploads
+│   └── results/               # Test results storage
+└── README.md                  # Main project documentation
 ```
 
 ---
