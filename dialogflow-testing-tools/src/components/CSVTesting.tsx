@@ -326,6 +326,7 @@ const CSVTesting: React.FC = () => {
             {error}
           </div>
         )}
+        </div>
       </div>
 
       {/* Upload Response */}
