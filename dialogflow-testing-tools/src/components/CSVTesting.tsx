@@ -175,18 +175,22 @@ const CSVTesting: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-          CSV Test Runner
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Upload a CSV file with test conversations and run automated tests against your Dialogflow CX agent
-        </p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-google-blue-50 via-white to-google-green-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
+      <div className="container mx-auto px-4 py-8 max-w-7xl">
+        <div className="mb-8 text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-google-blue-500 to-google-green-500 rounded-2xl mb-4 shadow-google-lg">
+            <FileText className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-google-blue-600 to-google-green-600 bg-clip-text text-transparent dark:from-google-blue-400 dark:to-google-green-400">
+            CSV Bulk Test Runner
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-3xl mx-auto">
+            Upload a CSV file with test conversations and run automated tests against your Dialogflow CX agent
+          </p>
+        </div>
 
-      {/* Configuration Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+        {/* Configuration Section */}
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-google-lg p-6 mb-6">
         <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
           Configuration
         </h2>
@@ -201,9 +205,9 @@ const CSVTesting: React.FC = () => {
               value={projectId}
               onChange={(e) => setProjectId(e.target.value)}
               placeholder="Will use default credentials if not provided"
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+              className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-xl
                        bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                       focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       focus:outline-none focus:border-google-blue-500 transition-colors"
             />
           </div>
 
@@ -216,9 +220,9 @@ const CSVTesting: React.FC = () => {
               value={agentId}
               onChange={(e) => setAgentId(e.target.value)}
               placeholder="Enter your Dialogflow CX Agent ID"
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+              className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-xl
                        bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                       focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       focus:outline-none focus:border-google-blue-500 transition-colors"
               required
             />
           </div>
@@ -230,9 +234,9 @@ const CSVTesting: React.FC = () => {
             <select
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+              className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-xl
                        bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                       focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       focus:outline-none focus:border-google-blue-500 transition-colors"
             >
               <option value="global">Global</option>
               <option value="us-central1">US Central 1</option>
@@ -251,9 +255,9 @@ const CSVTesting: React.FC = () => {
               value={environmentId}
               onChange={(e) => setEnvironmentId(e.target.value)}
               placeholder="Leave empty for default environment"
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+              className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-xl
                        bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                       focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       focus:outline-none focus:border-google-blue-500 transition-colors"
             />
           </div>
         </div>
@@ -295,9 +299,9 @@ const CSVTesting: React.FC = () => {
           <button
             onClick={handleUpload}
             disabled={!file || !agentId || isUploading}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700
-                     disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors
-                     flex items-center gap-2"
+            className="px-6 py-3 bg-gradient-to-r from-google-blue-500 to-google-blue-600 text-white rounded-xl hover:from-google-blue-600 hover:to-google-blue-700 shadow-google
+                     disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105
+                     flex items-center gap-2 font-semibold"
           >
             <Upload className="w-5 h-5" />
             {isUploading ? 'Uploading...' : 'Upload & Parse'}
@@ -306,9 +310,9 @@ const CSVTesting: React.FC = () => {
           <button
             onClick={handleRunTests}
             disabled={!uploadResponse || isRunning}
-            className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700
-                     disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors
-                     flex items-center gap-2"
+            className="px-6 py-3 bg-gradient-to-r from-google-green-500 to-google-green-600 text-white rounded-xl hover:from-google-green-600 hover:to-google-green-700 shadow-google
+                     disabled:bg-gray-400 disabled:cursor-not-allowed transition-all transform hover:scale-105
+                     flex items-center gap-2 font-semibold"
           >
             <Play className="w-5 h-5" />
             {isRunning ? 'Running Tests...' : 'Run Tests'}
@@ -317,8 +321,8 @@ const CSVTesting: React.FC = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="mt-4 p-4 bg-red-100 dark:bg-red-900 border border-red-400
-                        dark:border-red-600 rounded-lg text-red-700 dark:text-red-200">
+          <div className="mt-4 p-4 bg-google-red-50 dark:bg-google-red-900/30 border-2 border-google-red-400
+                        dark:border-google-red-600 rounded-xl text-google-red-700 dark:text-google-red-200 font-medium">
             {error}
           </div>
         )}
@@ -326,7 +330,7 @@ const CSVTesting: React.FC = () => {
 
       {/* Upload Response */}
       {uploadResponse && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-google-lg p-6 mb-6">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
             Parsed Test Cases
           </h2>
@@ -363,34 +367,34 @@ const CSVTesting: React.FC = () => {
 
       {/* Test Results */}
       {testResults && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-google-lg p-6">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
             Test Results
           </h2>
 
           {/* Summary */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div className="p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
-              <p className="text-sm text-blue-600 dark:text-blue-300 mb-1">Total Tests</p>
-              <p className="text-3xl font-bold text-blue-700 dark:text-blue-200">
+            <div className="p-4 bg-google-blue-50 dark:bg-google-blue-900/30 rounded-xl shadow-google">
+              <p className="text-sm text-google-blue-600 dark:text-google-blue-300 mb-1 font-medium">Total Tests</p>
+              <p className="text-3xl font-bold text-google-blue-700 dark:text-google-blue-200">
                 {testResults.summary.total_tests}
               </p>
             </div>
-            <div className="p-4 bg-green-50 dark:bg-green-900 rounded-lg">
-              <p className="text-sm text-green-600 dark:text-green-300 mb-1">Passed</p>
-              <p className="text-3xl font-bold text-green-700 dark:text-green-200">
+            <div className="p-4 bg-google-green-50 dark:bg-google-green-900/30 rounded-xl shadow-google">
+              <p className="text-sm text-google-green-600 dark:text-google-green-300 mb-1 font-medium">Passed</p>
+              <p className="text-3xl font-bold text-google-green-700 dark:text-google-green-200">
                 {testResults.summary.passed}
               </p>
             </div>
-            <div className="p-4 bg-red-50 dark:bg-red-900 rounded-lg">
-              <p className="text-sm text-red-600 dark:text-red-300 mb-1">Failed</p>
-              <p className="text-3xl font-bold text-red-700 dark:text-red-200">
+            <div className="p-4 bg-google-red-50 dark:bg-google-red-900/30 rounded-xl shadow-google">
+              <p className="text-sm text-google-red-600 dark:text-google-red-300 mb-1 font-medium">Failed</p>
+              <p className="text-3xl font-bold text-google-red-700 dark:text-google-red-200">
                 {testResults.summary.failed}
               </p>
             </div>
-            <div className="p-4 bg-purple-50 dark:bg-purple-900 rounded-lg">
-              <p className="text-sm text-purple-600 dark:text-purple-300 mb-1">Pass Rate</p>
-              <p className="text-3xl font-bold text-purple-700 dark:text-purple-200">
+            <div className="p-4 bg-google-purple-50 dark:bg-google-purple-900/30 rounded-xl shadow-google">
+              <p className="text-sm text-google-purple-600 dark:text-google-purple-300 mb-1 font-medium">Pass Rate</p>
+              <p className="text-3xl font-bold text-google-purple-700 dark:text-google-purple-200">
                 {testResults.summary.pass_rate}%
               </p>
             </div>
